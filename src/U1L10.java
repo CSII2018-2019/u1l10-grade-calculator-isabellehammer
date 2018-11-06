@@ -17,59 +17,65 @@ public class U1L10 {
 		//not sure if this is the way to go ??
 		Scanner numberofGrades = new Scanner(System.in);
 		int inputLength = numberofGrades.nextInt();
-		char[] array = inputLength.toCharArray();
-	      int arrayLength = array.length;
-	      char [] original = Arrays.copyOf(array,array.length);
-	   //have to ask them to enter the grades eventually
+		//System.out.println(inputLength);
+		int [] grades = new int [inputLength];
+		
+		for (int i = 0; i < grades.length; i++) {
+			System.out.println("Enter a grade.");
+			Scanner grade = new Scanner(System.in);
+			grades [i] = grade.nextInt();
+		}
+		
 	   
 	      
 	   //to calculate the average
 	   double total = 0;
-	   for (int i = 0; i < array.length; i++) {
-		   total += array[i];
-		   double average = (total/array.length);
-	   } System.out.println("Your average grade is " + average + ".");
+	   for (int i = 0; i < grades.length; i++) {
+		   total += grades[i];
+	   }
+	   int average = (int)(total/grades.length);
+	   System.out.println("Your average grade is " + average + ".");
+	   gradeLetter (average);
 	   
 	   //finding lowest score
-	   double min = array[0];
-	   for (int i = 0; i < array.length; i++) {
-		   if (array[i] < min) min = array[i];
+	   double min = grades[0];
+	   for (int i = 0; i < grades.length; i++) {
+		   if (grades[i] < min) min = grades[i];
 	   }
+	   System.out.println("Your minimum grade is " + min);
 	   
 	   //average with lowest dropped
-	  int newAvg = (average - min);
+	  int newAvg = (int) ((total - min)/(grades.length - 1));
+	  System.out.println("Your average grade with the lowest dropped is " + newAvg);
+	  gradeLetter (newAvg);
 		
-	
-	/*
-	 * public static String calculateGrade(int averageGrade, int indexOfHomeWork){
-	    averageGrade = studentScoreArray.length/indexOfHomeWork;
-	    String letterGrade;
 	     
-	    //below the conditions to be tested
-	    if (averageGrade < 60 && averageGrade >=0)
-	        letterGrade = "F";
-	         
-	    else if (averageGrade >=60 && averageGrade < 70)
-	        letterGrade = "D";
-	 
-	    else if (averageGrade >=70 && averageGrade < 80)
-	        letterGrade = "C";
-	 
-	    else if (averageGrade >= 80 && averageGrade < 90)
-	        letterGrade = "B";
-	 
-	    else if (averageGrade >=90 && averageGrade <= 100)
-	        letterGrade = "A";
-	 
-	    else
-	        letterGrade = "Error, Incorrect Input";
-	     
-	    //DisplayvalueInArray(indexOfHomeWork);;
-	    return letterGrade;
 	    }
-	    */
+	public static void gradeLetter (int newAvg) {
 		
-
+	if (newAvg < 60 && newAvg >=0){
+        System.out.println("Your grade is an F.");
+         }
+    else if (newAvg >=60 && newAvg < 70){
+        System.out.println("Your grade is a D.");
+        }
+ 
+    else if (newAvg >=70 && newAvg < 80){
+        System.out.println("Your grade is a C.");
+        }
+ 
+    else if (newAvg >= 80 && newAvg < 90){
+        System.out.println("Your grade is a B.");
+        }
+ 
+    else if (newAvg >=90 && newAvg <= 100){
+        System.out.println("Your grade is an A.");
+        }
+ 
+    else {
+        System.out.println("Error: incorrect input.");
+    }
+	
 	}
-
+	
 }
